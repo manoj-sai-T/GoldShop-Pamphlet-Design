@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Rates</title>
+    <link rel="stylesheet" href="index_styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Hero Section with Personalized Greeting -->
+        <section class="hero">
+            <h1 id="greeting">Welcome, Mr. Subash!</h1>
+            <div id="quote-box">
+                <p id="daily-quote"></p>
+            </div>
+        </section>
+
+	
+	<!-- Birthday Wishes Section -->
+        <section id="birthday-wishes" class="birthday">
+            <div id="birthday-content">
+                <img id="birthday-image" src="" alt="">
+                <p id="wishes"></p>
+            </div>
+        </section>
+    </div>
+
+
+        <!-- Main Content Section -->
+        <section class="content">
+            <!-- Rate Form -->
+            <div class="rate-form">
+                <h1>Unveil Today's Latest Rates!</h1>
+                <form id="rateForm">
+                    <div class="form-group">
+                        <label for="goldRate">8 Grams Gold (Rs):</label>
+                        <input type="number" id="goldRate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="silverRate">10 Gram Silver (Rs):</label>
+                        <input type="number" id="silverRate" required>
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Personalized Greeting Animation
+            const greeting = document.getElementById('greeting');
+            greeting.style.opacity = '1';
+            greeting.style.transform = 'translateY(0)';
+            greeting.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+
+            // Daily Quote
+            const quotes = [
+    "The best way to predict the future is to create it.",
+    "Every day is a new beginning.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "Happiness is not something ready-made. It comes from your own actions.",
+    "Opportunities don't happen. You create them.",
+    "The only limit to our realization of tomorrow is our doubts of today.",
+    "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.",
+    "Business opportunities are like buses, there’s always another one coming.",
+    "The harder you work for something, the greater you’ll feel when you achieve it.",
+    "Success is walking from failure to failure with no loss of enthusiasm.",
+    "Your most unhappy customers are your greatest source of learning.",
+    "Don’t watch the clock; do what it does. Keep going.",
+    "In the middle of difficulty lies opportunity.",
+    "The only place where success comes before work is in the dictionary.",
+    "It does not matter how slowly you go as long as you do not stop.",
+    "Success usually comes to those who are too busy to be looking for it.",
+    "The secret of getting ahead is getting started.",
+    "Do not wait to strike till the iron is hot, but make it hot by striking.",
+    "To be successful, you must act big, think big, and talk big.",
+    "You don’t have to be great to start, but you have to start to be great.",
+    "Success is not in what you have, but who you are.",
+    "The only way to do great work is to love what you do.",
+    "Don’t be afraid to give up the good to go for the great.",
+    "The future belongs to those who believe in the beauty of their dreams.",
+    "If you can dream it, you can achieve it.",
+    "The function of leadership is to produce more leaders, not more followers.",
+    "Believe you can and you’re halfway there.",
+    "The only limit to your impact is your imagination and commitment.",
+    "If you want to achieve greatness, stop asking for permission.",
+    "Don’t be pushed around by the fears in your mind. Be led by the dreams in your heart.",
+    "Your time is limited, so don’t waste it living someone else’s life.",
+    "If you want to lift yourself up, lift up someone else.",
+    "Don’t wait for the right opportunity: create it.",
+    "Success is not measured by what you accomplish, but the opposition you have encountered, and the courage with which you have maintained the struggle against overwhelming odds.",
+    "The only way to do great work is to love what you do.",
+    "Your success and happiness lie in you.",
+    "Success is not how high you have climbed, but how you make a positive difference to the world.",
+    "Don’t wait for the right opportunity: create it.",
+    "Success is not about being the best. It’s about always getting better.",
+    "Success is not just about making money. It’s about making a difference.",
+    "Success is the sum of small efforts, repeated day in and day out.",
+    "Don’t be afraid to give up the good to go for the great.",
+    "The road to success is always under construction.",
+    "The secret to success is to know something nobody else knows.",
+    "If you want to succeed, you need to be willing to take risks and be prepared to fail.",
+    "The path to success is to take massive, determined action.",
+    "Success is not the absence of failure; it’s the persistence through failure.",
+    "To succeed in business, you need to be willing to do what others are not willing to do.",
+    "Success is a journey, not a destination.",
+    "Don’t be afraid to give up the good to go for the great.",
+    "In business, you don’t get what you deserve, you get what you negotiate.",
+    "Success is about creating value, not just making money.",
+    "The most successful people are those who are willing to go above and beyond to achieve their goals."
+];
+
+            document.getElementById('daily-quote').innerText = quotes[Math.floor(Math.random() * quotes.length)];
+
+            // Define birthday members
+            const members = [
+                { name: "Mavayya", birthday: "06-07", img: "mavayya.jpg", wish: "Happy Birthday, Mavayya! Wishing you a fantastic year ahead!" },
+                { name: "Attha", birthday: "10-09", img: "attha.jpg", wish: "Happy Birthday, Attha! May your day be filled with joy and laughter!" },
+		{ name: "Anu", birthday: "08-31", img: "anu.jpg", wish: "Happy Birthday, Anu! May your day be filled with joy and laughter!" },
+		{ name: "Jitesh", birthday: "03-08", img: "jitesh.jpg", wish: "Happy Birthday, Jitesh! Wishing you a fantastic year ahead!" },
+		{ name: "mavayyaattha", birthday: "08-02", img: "both.jpg", wish: "Happy Marriage Day, Both Of You! Wishing you a lifetime filled with love, laughter, and countless cherished memories." }
+
+		
+            ];
+
+            // Check for birthday
+            const today = new Date();
+            const formattedToday = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+
+            const member = members.find(member => member.birthday === formattedToday);
+
+            if (member) {
+                // Display birthday image and wishes
+                const birthdayImage = document.getElementById('birthday-image');
+                const wishes = document.getElementById('wishes');
+                
+                birthdayImage.src = member.img;
+                birthdayImage.alt = member.name;
+                wishes.innerText = member.wish;
+
+                // Add extraordinary animation
+                birthdayImage.style.animation = 'celebrate 2s ease-in-out';
+                wishes.style.animation = 'fadeIn 3s ease-in-out';
+            } else {
+                // Hide birthday wishes if no birthday
+                document.getElementById('birthday-wishes').style.display = 'none';
+            }
+
+            // Save rates to localStorage and redirect to pamphlet
+            document.getElementById('rateForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const goldRate = document.getElementById('goldRate').value;
+                const silverRate = document.getElementById('silverRate').value;
+
+                localStorage.setItem('goldRate', goldRate);
+                localStorage.setItem('silverRate', silverRate);
+
+                window.location.href = 'pamphlet.html';
+            });
+        });
+    </script>
+</body>
+</html>

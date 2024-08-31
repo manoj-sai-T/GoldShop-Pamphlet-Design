@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gold & Silver Rates Pamphlet</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="pamphlet">
+        <!-- Header Section -->
+        <div class="header">
+            <img src="kinera logo.png" alt="Shop Logo" class="logo left-logo">
+            <h1 class="shop-name">KINNERA JEWELLERS</h1>
+            <img id="dayLogo" alt="Day Logo" class="logo right-logo">
+        </div>
+
+        <div class="content">
+            <h1>Gold & Silver Rates</h1>
+            <p class="date">Today's Date: <span id="date"></span></p>
+            <div class="rate-display">
+                <div class="rate-box gold">
+                    <p><b>Gold Savara (8 gms)</b></p>
+                    <p id="goldRateDisplay">Rs. 0</p>
+                </div>
+                <div class="rate-box silver">
+                    <p><b>Silver Retail (10 gm)</b></p>
+                    <p id="silverRateDisplay">Rs. 0</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="shop-address">Aswaraopet Road, Munsub Street, Jangareddygudem, AndhraPradesh - 534447</p>
+            <p class="shop-contact">Contact: 9010959697 | Email: sgontla@gmail.com</p>
+	    <p> <b>Prop: G. Venkateswarao (Yedukondala swami)</b></p>
+        </div>
+    </div>
+
+    <script>
+        function formatDate(date) {
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        }
+
+        document.getElementById('date').textContent = formatDate(new Date());
+
+        const goldRate = localStorage.getItem('goldRate');
+        const silverRate = localStorage.getItem('silverRate');
+
+        document.getElementById('goldRateDisplay').textContent = `Rs. ${parseInt(goldRate).toLocaleString()}`;
+        document.getElementById('silverRateDisplay').textContent = `Rs. ${parseFloat(silverRate).toFixed(2).toLocaleString()}`;
+
+        const dayLogo = document.getElementById('dayLogo');
+        const today = new Date().getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+        const logos = [
+            'sunday-logo.jpg', // Sunday
+            'monday-logo.jpg', // Monday
+            'tuesday-logo.jpg', // Tuesday
+            'wednesday-logo.jpg', // Wednesday
+            'thursday-logo.jpg', // Thursday
+            'friday-logo.jpg', // Friday
+            'saturday-logo.jpg' // Saturday
+        ];
+
+        dayLogo.src = logos[today];
+    </script>
+</body>
+</html>

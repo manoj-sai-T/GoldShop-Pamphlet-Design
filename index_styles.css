@@ -1,0 +1,135 @@
+/* General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    overflow-x: hidden;
+   }
+
+.wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 50px 0;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: #fff;
+    border-radius: 15px;
+}
+
+#quote-box {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #e0e0e0;
+}
+
+/* Content Section */
+.content {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.rate-form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rate-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1e3c72;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2a5298;
+}
+
+/* Birthday Wishes Section */
+.birthday {
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    padding: 50px 20px;
+    text-align: center;
+    border-radius: 15px;
+    margin-top: 50px;
+    overflow: hidden;
+}
+
+#birthday-content {
+    position: relative;
+    z-index: 1;
+}
+
+#birthday-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    animation: celebrate 2s ease-in-out infinite;
+}
+
+#wishes {
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 0;
+    animation: fadeIn 3s ease-in-out;
+}
+
+/* Keyframes for Animation */
+@keyframes celebrate {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
